@@ -4,6 +4,10 @@
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/php-project/1">
             <name>LopezCalculatorApp</name>
+    <type>org.netbeans.modules.web.clientproject</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/clientside-project/1">
+            <name>LopezCalcApp</name>
         </data>
     </configuration>
 </project>
