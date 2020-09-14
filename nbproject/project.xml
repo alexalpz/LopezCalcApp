@@ -5,8 +5,5 @@
         <data xmlns="http://www.netbeans.org/ns/clientside-project/1">
             <name>LopezCalcApp</name>
         </data>
-        <data xmlns="http://www.netbeans.org/ns/php-project/1">
-            <name>LopezCalculatorApp</name>
-        </data>
     </configuration>
 </project>
