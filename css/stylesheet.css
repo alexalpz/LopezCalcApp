@@ -1,0 +1,94 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 9, 2020, 11:09:28 PM
+    Author     : Alexa Lopez
+*/
+
+
+/*Centers calculator in center*/
+.container{
+    width: 422px;
+    border:1px solid #D8BFD8;
+    margin: 20px auto 20px auto;
+}
+
+
+.buttons{
+   display: grid;
+   grid-template-rows : repeat(5,1fr);
+   grid-template-columns: repeat(4,1fr);
+   grid-gap: 1px;
+}
+
+/*Top input*/
+.inputsection{
+     grid-column:1/2;
+     display: block;
+     
+
+}
+/*Botton input*/
+.inputsection2{
+     grid-column:1/2;
+     display: block;
+ 
+}
+/*Text decorations*/
+input[type=text]{
+     box-sizing: border-box;
+     margin-top:5px;
+     padding: 20px auto 20px auto;
+     font-size:30px;
+     color:purple;
+     text-align:center;
+     background:transparent;    
+     border:none;
+     width: 400px;
+     
+}
+
+/*Text placeholder*/
+::placeholder { 
+  color: #E9967A;
+  opacity: 0.5; 
+}
+
+/*Buttons*/
+.btn1{
+    text-align:center;
+    background-color:pink;
+}
+
+/*Buttons*/
+.btn2{
+    text-align:center;
+    background-color:pink;
+}
+
+
+.btn1>input {
+    background:transparent;
+    border:none;
+    justify-content:center;
+    align-self: end;
+    color:#FF69B4;
+    font-size:2.5em;
+    margin-top:25px;
+
+}
+
+.btn2>input {
+    background:transparent;
+    border:none;
+    justify-content:center;
+    align-self: end;
+    color:#FF69B4;
+    font-size:2.5em;
+    margin-top:25px;
+ 
+}
+
