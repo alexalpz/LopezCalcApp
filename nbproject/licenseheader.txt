@@ -1,0 +1,8 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}Alexa Lopez
+${licensePrefix}Calculator Application ${licensePrefix}
+<#if licenseLast??>
+${licenseLast}
+</#if>
