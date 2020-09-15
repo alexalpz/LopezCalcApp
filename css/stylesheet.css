@@ -1,220 +1,125 @@
+
 /*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Sep 9, 2020, 11:09:28 PM
-    Author     : Alexa Lopez
+    Name: Alexa Lopez
+    Project: LopezCalcApp
 */
 
+/*Rotate screen on landscape*/
 
-/*Centers calculator in center*/
-.container{
-    width: 422px;
-    border:1px solid #D8BFD8;
-    margin: 20px auto 20px auto;
+html {
+	height: 100%;
+}
+body {
+	height: 100%;
+}
+.demo-wrappper {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+.demo-wrappper h1 {
+	color: #fff;
+	text-align: center;
+	margin: 0;
+
+	display: table-cell;
+    vertical-align: middle;
+}
+@media all and (orientation:portrait) {
+	.demo-wrappper .landscape {
+		display: none;
+	}
+}
+@media all and (orientation:landscape) {
+	.demo-wrappper .portrait {
+		display: none;
+	}
+}
+
+/*Overall calculator*/
+.container {
+  padding-top:2%;
+  width: 400px;
+  margin: auto;
+}
+
+/*User input screen*/
+.calcHead {
+  background: #A0522D;
+  width: 100%;
+  height: 150px;
+  padding: 20px;
+}
+
+/*User input & output*/
+.calcOutput, .calcInput {
+  background-color: #A0522D;
+  text-align: center;
+  color: white;
+  font-size: 21px;
+  padding-bottom: 10px;
+  border: solid 1px #A0522D;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
 }
 
 
-.buttons{
-   display: grid;
-   grid-template-rows : repeat(5,1fr);
-   grid-template-columns: repeat(4,1fr);
-   grid-gap: 1px;
-}
-
-/*Top input*/
-.inputsection{
-     grid-column:1/2;
-     display: block;
-     
-
-}
-/*Botton input*/
-.inputsection2{
-     grid-column:1/2;
-     display: block;
- 
-}
-/*Text decorations*/
-input[type=text]{
-     box-sizing: border-box;
-     margin-top:5px;
-     padding: 20px auto 20px auto;
-     font-size:30px;
-     color:purple;
-     text-align:center;
-     background:transparent;    
-     border:none;
-     width: 400px;
-     
-}
-
-/*Text placeholder*/
-::placeholder { 
-  color: #E9967A;
-  opacity: 0.5; 
-}
-
-/*Buttons*/
-.btn1{
-    text-align:center;
-    background-color:pink;
-}
-
-/*Buttons*/
-.btn2{
-    text-align:center;
-    background-color:pink;
-}
-
-
-.btn1>input {
-    background:transparent;
-    border:none;
-    justify-content:center;
-    align-self: end;
-    color:#FF69B4;
-    font-size:2.5em;
-    margin-top:25px;
+/*Calculator behind buttons*/
+.calcBody {
+  width: 275px;
+  margin: auto;
+  min-height: 400px;
+  border: solid 1px #787878;
 
 }
 
-.btn2>input {
-    background:transparent;
-    border:none;
-    justify-content:center;
-    align-self: end;
-    color:#FF69B4;
-    font-size:2.5em;
-    margin-top:25px;
- 
+
+/*Calculator lines row*/
+.calcRow {
+  width: 100%;
+  background: #C0C0C0;
 }
 
-/* Same as above, modified for operators */
-.ops:focus::after {
-  content: attr(data-ops);
-  margin-left: -210px;
-  width: 420px;
+/*Side of calculator*/
+.btn.l {
+  color: white;
+  background: #FF7F50;
 }
 
-/* Same as above, modified for result */
-.equals:focus::after {
-  content: attr(data-result);
-  margin-left: -300px;
-  width: 600px;
+/*C button color*/
+.btn.c {
+  color: #D95D4E;
+  background: #bebebe;
 }
 
-/* Reset button */
-
-.reset {
-  background: rgba(201,120,116,.28);
-  color:#c97874;
-  font-weight: 400;
-  margin-left: -77px;
-  padding: 0.5em 1em;
-  position: absolute;
-    top: -20em;
-    left: 50%;
-  width: auto;
-  height: auto;
-  
-  &:hover {
-    background: #c97874;
-    color: #100a1c;    
-  }
-  
-  /* When button is revealed */
-  &.show {
-    top: 20em;
-    animation: fadein 4s;
-  }
+/*Button hover*/
+.btn:hover {
+  background: #A0A0A0;
 }
 
-/* Animations */
-
-/* Values that appear onclick */
-@keyframes zoom {
-  0% { 
-    transform: scale(.2); 
-    opacity: 1;
-  }
-  
-  70% { 
-    transform: scale(1); 
-  }
-  
-  100% { 
-    opacity: 0;
-  }
+/*Button Style*/
+.btn {
+  width: 25%;
+  background: #D8D8D8;
+  color: black;
+  padding: 20px;
+  display: inline-block;
+  font-size: 25px;
+  text-align: center;
+  vertical-align: middle;
+  margin-right: -4px;
+  border-right: solid 2px #A9A9A9;
+  border-bottom: solid 2px #787878;
+  transition: all 0.2s ease-in-out;
 }
 
-/* Division by zero animation */
-@keyframes broken {
-  0% {
-    transform: translate3d(0,0,0);
-    opacity: 1;
-  }
+/*
+Sources:
 
-  5% {
-    transform: rotate(5deg);
-  }
+1. Screen rotate source: https://stackoverflow.com/questions/49671841/how-can-i-lock-auto-rotate-on-the-website-for-the-mobile-phone
 
-  15% {
-    transform: rotate(-5deg);
-  }
 
-  20% {
-    transform: rotate(5deg);
-  }
-
-  25% {
-    transform: rotate(-5deg);
-  }
-
-  50% {
-    transform: rotate(45deg);
-  }
-
-  70% {
-    transform: translate3d(0,2000px,0);
-    opacity: 1;
-  }
-
-  75% {
-    opacity: 0;
-  }
-
-  100% {
-    transform: translate3d(0,-2000px,0);
-  }
-}
-
-/* Reset button fadein */
-@keyframes fadein {
-  0% {
-    top: 20em;
-    opacity: 0;
-  }
-  
-  50% {
-    opacity: 0;
-  }
-  
-  100% {
-    opacity: 1;
-  }
-}
-
-@media (min-width: 420px) {
-  .calculator {
-    width: 12em;
-  }
-  .viewer {
-    width: 8.5em;
-  }
-  button {
-    margin: 0.5em;
-  }
-}
+*/
