@@ -13,16 +13,6 @@ body {
 	height: 100%;
 }
 
-@media all and (orientation:portrait) {
-	.demo-wrappper .landscape {
-		display: none;
-	}
-}
-@media all and (orientation:landscape) {
-	.demo-wrappper .portrait {
-		display: none;
-	}
-}
 
 /*Overall calculator*/
 .container {
@@ -33,7 +23,7 @@ body {
 
 /*User input screen*/
 .calcHead {
-  background: #A0522D;
+  background: #d9865f;
   width: 100%;
   height: 150px;
   padding: 20px;
@@ -41,17 +31,17 @@ body {
 
 /*User input & output*/
 .calcOutput, .calcInput {
-  background-color: #A0522D;
+  background-color: #d9865f;
   text-align: center;
   color: white;
   font-size: 21px;
   padding-bottom: 10px;
-  border: solid 1px #A0522D;
+  border: solid 1px #d9865f;
 }
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+::placeholder { 
   color: white;
-  opacity: 1; /* Firefox */
+  opacity: 1; 
 }
 
 
@@ -108,6 +98,8 @@ body {
 Sources:
 
 1. Screen rotate source: https://stackoverflow.com/questions/49671841/how-can-i-lock-auto-rotate-on-the-website-for-the-mobile-phone
-
-
+2. Placeholder: https://developer.mozilla.org/en-US/docs/Web/CSS/::placeholder
+3. Button placements: https://stackoverflow.com/questions/42517956/stack-buttons-vertically
+4. Math symbols: https://www.rapidtables.com/math/symbols/Division_Sign.html
+5. Color inspiration: https://cdn.osxdaily.com/wp-content/uploads/2015/03/calculator-mac-paper-tape-610x463.jpg
 */
