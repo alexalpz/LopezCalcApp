@@ -13,20 +13,13 @@ body {
 	height: 100%;
 }
 
-
-/*Overall calculator*/
-.container {
-  padding-top:2%;
-  width: 400px;
-  margin: auto;
-}
-
 /*User input screen*/
 .calcHead {
   background: #d9865f;
   width: 100%;
   height: 150px;
   padding: 20px;
+
 }
 
 /*User input & output*/
@@ -34,7 +27,6 @@ body {
   background-color: #d9865f;
   text-align: center;
   color: white;
-  font-size: 21px;
   padding-bottom: 10px;
   border: solid 1px #d9865f;
 }
