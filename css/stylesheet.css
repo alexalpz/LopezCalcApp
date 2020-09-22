@@ -22,14 +22,15 @@ body{
 }
 
 /*User input & output*/
-#screen, .userInput {
+.calcHead, .inputField {
  background: #C293EF;
  background: -webkit-linear-gradient(top left, #C293EF, #87988C);
  background: -moz-linear-gradient(top left, #C293EF, #87988C);
  background: linear-gradient(to bottom right, #C293EF, #87988C);
  text-align: center;
  color: white;
- padding-bottom: 3%;
+ padding-top: 3%;
+ padding-bottom:4%;
  border: solid 1px rgb(208,195,185);
 }
 
@@ -37,17 +38,6 @@ body{
   color: white;
   opacity: 1; 
 }
-
-
-/*Calculator behind buttons*/
-.calcBody {
-  width: 100px;
-  margin: auto;
-  min-height: 400px;
-  border: solid 1px #787878;
-
-}
-
 
 /*Calculator lines row*/
 .calcRow {
@@ -62,7 +52,7 @@ body{
 }
 
 /*C button color*/
-.button.clear {
+.button, #clear {
   color: #D95D4E;
   background: #bebebe;
 }
@@ -73,7 +63,7 @@ body{
 }
 
 /*Button Style*/
-.work,.clear {
+.work {
   width: 25%;
   background: #D8D8D8;
   color: black;
