@@ -3,103 +3,106 @@
     Project: Calculator Application
 */
 
-/*Rotate screen on landscape*/
 
-
+html{
+    padding:auto;
+}
 
 body{
     padding-top:30px;
-    background: url("../images/marble-wallpaper.jpg");
-    
+    background: #a8c0ff;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3f2b96, #a8c0ff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #3f2b96, #a8c0ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
+
 
 /*User input screen*/
 .calcHead {
-  background: #ffcc99;
-  width: 100%;
-  padding: 20px;
+    width: 100%;
+    background: #2b5876;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4e4376, #2b5876);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4e4376, #2b5876); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    text-align: center;
+    color: white;
+    padding-top: 3%;
+    padding-bottom:3%;
 
 }
 
-/*User input & output*/
-.calcHead, .inputField {
- background: #C293EF;
- background: -webkit-linear-gradient(top left, #C293EF, #87988C);
- background: -moz-linear-gradient(top left, #C293EF, #87988C);
- background: linear-gradient(to bottom right, #C293EF, #87988C);
- text-align: center;
- color: white;
- padding-top: 3%;
- padding-bottom:4%;
- border: solid 1px rgb(208,195,185);
+#inputField{
+    background: transparent;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    border:none;
+    width: 100%;
 }
 
 ::placeholder { 
   color: white;
-  opacity: 1; 
+  opacity: 0.3; 
 }
 
 /*Calculator lines row*/
-.calcRow {
-  width: 100%;
-  background: #C0C0C0;
+.calcBody {
+  
+  background:#a2bbf4;
+
 }
 
 /*Side of calculator*/
 .button.sign {
-  color: white;
-  background: #FF7F50;
+    color: white;
+    background: #8E2DE2;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 /*C button color*/
-.button, #clear {
-  color: #D95D4E;
-  background: #bebebe;
+.button.clear {
+    color:white;
+    background: #a2a4f4;
+   
+
 }
+
 
 /*Button hover*/
 .work:hover {
-  background: #A0A0A0;
+  background: #4d3957;
+}
+
+.clear:hover{
+  background: #ad3939;
 }
 
 /*Button Style*/
-.work {
+.work , .disabled{
   width: 25%;
-  background: #D8D8D8;
-  color: black;
+  background:#a2bbf4;
+  color: white;
   padding: 20px;
   display: inline-block;
   font-size: 25px;
   text-align: center;
   vertical-align: middle;
   margin-right: -4px;
-  border-right: solid 2px #A9A9A9;
-  border-bottom: solid 2px #787878;
-  transition: all 0.2s ease-in-out;
+  border:none;
+  transition: all 0.7s ease-in-out;
 }
 
-.disabled{
-  width: 25%;
-  background: #D8D8D8;
-  color: black;
-  padding: 20px;
-  display: inline-block;
-  font-size: 25px;
-  text-align: center;
-  vertical-align: middle;
-  margin-right: -4px;
-  border-right: solid 2px #A9A9A9;
-  border-bottom: solid 2px #787878;
- 
-}
 /*
 Sources:
 
+To grab specific colors, I used google chromes Color Picker extension. 
 1. Screen rotate source: https://stackoverflow.com/questions/49671841/how-can-i-lock-auto-rotate-on-the-website-for-the-mobile-phone
 2. Placeholder: https://developer.mozilla.org/en-US/docs/Web/CSS/::placeholder
 3. Button placements: https://stackoverflow.com/questions/42517956/stack-buttons-vertically
 4. Math symbols: https://www.rapidtables.com/math/symbols/Division_Sign.html
-5. Color inspiration: https://cdn.osxdaily.com/wp-content/uploads/2015/03/calculator-mac-paper-tape-610x463.jpg
+5. Design inspiration:https://rossfinn.com/daily-ui-004/
 6. Calculator resizing stuff: https://codepen.io/tag/calculator?cursor=ZD0xJm89MCZwPTQ=
-7. CSS Gradient: https://www.css-gradient.com/
+7. CSS Gradient: https://uigradients.com/#DanceToForget
+
 */

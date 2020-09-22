@@ -1,15 +1,5 @@
 window.onload = function (){
-    var buttons = document.getElementsByTagName("button");
-    var clear = document.getElementById("clear");
-        
-    for(var i=0;i<buttons.length;i+=1){
-        if(buttons[i].innerHTML === '='){
-            buttons[i].addEventListener("click", calculations(i));
-        }else{
-            buttons[i].addEventListener("click", operations(i));
-            }
-        }
-                
+    
 function operations (i){
     return function(){
         if (buttons[i].innerHTML === "+") {
@@ -23,11 +13,17 @@ function operations (i){
         }else if(buttons[i].innerHTML === "^"){
             document.getElementById("inputField").value += "**";
         }else{
-            document.getElementById("inputField").value  += buttons[i].innerHTML;
-        }
-     };
-   }
-   
+            document.getElementById("inputField").value  += buttons[i].innerHTML;}}
+    ;}
+
+var buttons = document.getElementsByTagName("button");   
+for(var i=0;i<buttons.length;i+=1){
+    if(buttons[i].innerHTML === '='){
+        buttons[i].addEventListener("click", calculations(i));
+    }else{
+        buttons[i].addEventListener("click", operations(i));}}
+
+var clear = document.getElementById("clear");  
 clear.onclick = function () {
     document.getElementById("inputField").value = "" ;
   }; 
@@ -35,10 +31,14 @@ clear.onclick = function () {
 function calculations() {
     return function () {   
        /*eval shows "infinity" if result too long or "NaN" if not equatable*/
-       document.getElementById("inputField").value = eval(document.getElementById("inputField").value);
-    };
-  }
+       document.getElementById("inputField").value = eval(document.getElementById("inputField").value);};}
+       
 };
+
+
+
+
+
 
 /*Sources:
  * 1. Immidiate display on page (window.onload): https://www.w3schools.com/jsref/event_onload.asp
