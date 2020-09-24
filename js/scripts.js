@@ -6,7 +6,7 @@ function operations (i){
             document.getElementById("inputField").value += "+" ;
         }else if (buttons[i].innerHTML === "÷") {
             document.getElementById("inputField").value += "/" ;
-        }else if(buttons[i].innerHTML === "x"){
+        }else if(buttons[i].innerHTML === "×"){
             document.getElementById("inputField").value += "*";
         }else if (buttons[i].innerHTML === "-") {
             document.getElementById("inputField").value  += "-" ;
