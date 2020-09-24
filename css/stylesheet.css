@@ -10,7 +10,7 @@ body{
     background: #03001e;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    overflow: hidden;
 
 
 }
@@ -97,6 +97,30 @@ body{
   transition: all 0.7s ease-in-out;
 }
 
+
+
+/*Mobile resizing*/
+
+@media (min-width: 576px) {
+  :root {
+    --size-divisor: 2;
+  }
+}
+@media (min-width: 768px) {
+  :root {
+    --size-divisor: 1.5;
+  }
+}
+@media (min-width: 992px) { 
+  :root {
+    --size-divisor: 1;
+  }
+}
+@media (min-width: 1200px) { 
+  :root {
+    --size-divisor: .67;
+  }
+}
 /*
 Sources:
 
@@ -108,5 +132,5 @@ To grab specific colors, I used google chromes Color Picker extension.
 5. Design inspiration:https://rossfinn.com/daily-ui-004/
 6. Calculator resizing stuff: https://codepen.io/tag/calculator?cursor=ZD0xJm89MCZwPTQ=
 7. CSS Gradient: https://uigradients.com/#DanceToForget
-
+8. Size resizing: https://css-tricks.com/turning-a-fixed-size-object-into-a-responsive-element/
 */
