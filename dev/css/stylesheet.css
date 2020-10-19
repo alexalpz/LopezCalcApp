@@ -1,0 +1,137 @@
+/*
+    Name: Alexa Lopez
+    Project: Calculator Application
+*/
+
+
+
+body{
+    padding-top:10px;
+    padding-bottom:10px;
+    background: #03001e;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    overflow: hidden;
+
+
+}
+
+
+/*User input screen*/
+.calcHead {
+    width: 100%;
+    background: #252d47;  /* fallback for old browsers */
+    text-align: center;
+    color: white;
+    padding-top: 3%;
+    padding-bottom:3%;
+  box-shadow: 5px 3px 18px 0px #100017;
+
+}
+
+.container{
+    padding:0px;
+    box-shadow: 5px 3px 18px 0px #100017;
+}
+
+
+#inputField{
+    background: transparent;
+    text-align: center;
+    color: white;
+    font-size: 34px;
+    border:none;
+    width: 100%;
+    font-family: 'Epilogue', sans-serif;
+}
+
+::placeholder { 
+   font-family: 'Epilogue', sans-serif;
+  color: white;
+  opacity: 0.3; 
+}
+
+/*Calculator lines row*/
+.calcBody {
+   background:#1c2237;
+   box-shadow: 5px 3px 10px 0px #100017;
+}
+
+/*Side of calculator*/
+.button.sign {
+    color: white;
+   background: #bc4e9c;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f80759, #bc4e9c);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f80759, #bc4e9c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    font-size: 25px;
+    font-weight: bold;
+
+}
+
+/*C button color*/
+.button.clear {
+    color:#f80759;
+    background:#252d47;
+}
+
+/*Button hover*/
+.work:hover {
+  background: #7c5bff;
+}
+
+.clear:hover{
+  background: #ad3939;
+}
+
+/*Button Style*/
+.work , .disabled{
+  width: 25%;
+  background:#1c2237;
+  color: white;
+  padding: 20px;
+  display: inline-block;
+  font-size: 25px;
+  text-align: center;
+  vertical-align: middle;
+  margin-right: -4px;
+  border:none;
+  transition: all 0.7s ease-in-out;
+}
+
+
+
+/*Mobile resizing*/
+
+@media (min-width: 576px) {
+  :root {
+    --size-divisor: 2;
+  }
+}
+@media (min-width: 768px) {
+  :root {
+    --size-divisor: 1.5;
+  }
+}
+@media (min-width: 992px) { 
+  :root {
+    --size-divisor: 1;
+  }
+}
+@media (min-width: 1200px) { 
+  :root {
+    --size-divisor: .67;
+  }
+}
+/*
+Sources:
+
+To grab specific colors, I used google chromes Color Picker extension. 
+1. Screen rotate source: https://stackoverflow.com/questions/49671841/how-can-i-lock-auto-rotate-on-the-website-for-the-mobile-phone
+2. Placeholder: https://developer.mozilla.org/en-US/docs/Web/CSS/::placeholder
+3. Button placements: https://stackoverflow.com/questions/42517956/stack-buttons-vertically
+4. Math symbols: https://www.rapidtables.com/math/symbols/Division_Sign.html
+5. Design inspiration:https://rossfinn.com/daily-ui-004/
+6. Calculator resizing stuff: https://codepen.io/tag/calculator?cursor=ZD0xJm89MCZwPTQ=
+7. CSS Gradient: https://uigradients.com/#DanceToForget
+8. Size resizing: https://css-tricks.com/turning-a-fixed-size-object-into-a-responsive-element/
+*/
