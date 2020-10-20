@@ -19,7 +19,7 @@ if (!$conn) {
 echo "";
 
 // Recording user login in database
-$sql = "INSERT INTO LogginActivity (ID, timestamp, message) VALUES (NULL, NULL, 'Page Accessed')";
+$sql = "INSERT INTO LogginActivity (ID, timestamp, message) VALUES (NULL, NULL, 'Page accessed from production environment')";
 if (mysqli_query($conn, $sql)) {
       echo "";
 } else {
