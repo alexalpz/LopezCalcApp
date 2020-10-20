@@ -1,3 +1,5 @@
+<?php require('DBConnection.php'); ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -40,12 +42,12 @@
                 <button type="button" class="button work" id="4">4</button>
                 <button type="button" class="button work" id="5">5</button>
                 <button type="button" class="button work" id="6">6</button>
-                <button type="button" class="button work sign" id="multiply"  oninput="checking()">Ã—</button>
+                <button type="button" class="button work sign" id="multiply"  oninput="checking()">×</button>
                 
                 <button type="button" class="button work" id="1">1</button>
                 <button type="button" class="button work" id="2">2</button>
                 <button type="button" class="button work" id="3">3</button>
-                <button type="button" class="button work sign" id="divide">Ã·</button>
+                <button type="button" class="button work sign" id="divide">÷</button>
                 
                 <button type="button" class="button clear work" id="clear">C</button>
                 <button type="button" class="button work" id="0">0</button>

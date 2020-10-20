@@ -4,9 +4,9 @@ function operations (i){
     return function(){
         if (buttons[i].innerHTML === "+") {
             document.getElementById("inputField").value += "+" ;
-        }else if (buttons[i].innerHTML === "Ã·") {
+        }else if (buttons[i].innerHTML === "÷") {
             document.getElementById("inputField").value += "/" ;
-        }else if(buttons[i].innerHTML === "Ã—"){
+        }else if(buttons[i].innerHTML === "×"){
             document.getElementById("inputField").value += "*";
         }else if (buttons[i].innerHTML === "-") {
             document.getElementById("inputField").value  += "-" ;
@@ -36,7 +36,31 @@ function calculations() {
 };
 
 
+//Security Features. I may add the security features on PHP to avoid JS disabling. 
+//
+//White listing characters on input
+function checking(){
+  var x = document.getElementById("inputField").value  
+  var regex=/[0-9]\b/;  
+    if (x.match(regex) || (x==="+") || (x==="-") || (x==="*") || (x==="/") || (x==="**"))
+    {
+      document.getElementById("inputField").innerHTML="";
+      return true;
+    }
+    else if(!(x.match(regex))){
+      document.getElementById("inputField").innerHTML="You can only input numbers and the following signs + - * / **";
+      x = x.substring(0, x.length - 1);   
+       document.getElementById("inputField").value = x;
+      return false;
+    }
+}
 
+//Disabling copy and paste on the input field
+ $(document).ready(function () {
+    $('input.disablecopypaste').bind('copy paste', function (e) {
+       e.preventDefault();
+    });
+  });
 
 
 
@@ -49,5 +73,6 @@ function calculations() {
 *  5. The JS in this helped me with adding multiple values after making first calculation: https://dev.to/coolscratcher/make-a-calculator-with-html-css-and-js-2o48
 *  6. Reading symbols to then translate to actual operations inspo: https://sites.google.com/site/ivanolivarescis2336/_/rsrc/1336321745157/week11-assignments/calculator/Calculator_Sournce.JPG
 *  7. Eval function for calculating string expressions: http://hepunx.rl.ac.uk/~adye/jsspec11/builtin.htm
-*  
-*/
+*  8. Checking input characters: https://stackoverflow.com/questions/47642022/number-validation-for-javascript-simple-calculator-with-regex
+*  9. Disabling copy and paste on my input field: https://stackoverflow.com/questions/1226574/disable-pasting-text-into-html-form
+ **/
