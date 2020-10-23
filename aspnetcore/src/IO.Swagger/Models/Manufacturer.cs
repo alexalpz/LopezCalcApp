@@ -1,5 +1,5 @@
 /*
- * Simple Calculator API
+ * Lopez Calculator API
  *
  * This is a simple API
  *

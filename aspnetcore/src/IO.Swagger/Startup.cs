@@ -1,5 +1,5 @@
 /*
- * Simple Calculator API
+ * Lopez Calculator API
  *
  * This is a simple API
  *
@@ -73,8 +73,8 @@ namespace IO.Swagger
                     c.SwaggerDoc("1.0.0", new OpenApiInfo
                     {
                         Version = "1.0.0",
-                        Title = "Simple Calculator API",
-                        Description = "Simple Calculator API (ASP.NET Core 3.0)",
+                        Title = "Lopez Calculator API",
+                        Description = "Lopez Calculator API (ASP.NET Core 3.0)",
                         Contact = new OpenApiContact()
                         {
                            Name = "Swagger Codegen Contributors",
@@ -113,10 +113,10 @@ namespace IO.Swagger
             app.UseSwaggerUI(c =>
             {
                 //TODO: Either use the SwaggerGen generated Swagger contract (generated from C# classes)
-                c.SwaggerEndpoint("/swagger/1.0.0/swagger.json", "Simple Calculator API");
+                c.SwaggerEndpoint("/swagger/1.0.0/swagger.json", "Lopez Calculator API");
 
                 //TODO: Or alternatively use the original Swagger contract that's included in the static files
-                // c.SwaggerEndpoint("/swagger-original.json", "Simple Calculator API Original");
+                // c.SwaggerEndpoint("/swagger-original.json", "Lopez Calculator API Original");
             });
 
             //TODO: Use Https Redirection
