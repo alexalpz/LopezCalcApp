@@ -7,7 +7,7 @@
  */
 
 //Note: Will try to change as ini file soon. 
-require('../../config/cred.php');
+require('../config/cred.php');
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $database);
@@ -19,7 +19,7 @@ if (!$conn) {
 echo "";
 
 // Recording user login in database
-$sql = "INSERT INTO LogginActivity (ID, timestamp, message) VALUES (NULL, NULL, 'Page accessed from development environment')";
+$sql = "INSERT INTO LogginActivity (ID, timestamp, message) VALUES (NULL, NULL, 'Page accessed from production environment')";
 if (mysqli_query($conn, $sql)) {
       echo "";
 } else {

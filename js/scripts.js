@@ -12,6 +12,12 @@ function operations (i){
             document.getElementById("inputField").value  += "-" ;
         }else if(buttons[i].innerHTML === "^"){
             document.getElementById("inputField").value += "**";
+        }else if(buttons[i].innerHTML === "MS"){
+            document.getElementById("inputField").value += "";
+        }else if(buttons[i].innerHTML === "MR"){
+            document.getElementById("inputField").value += "";
+        }else if(buttons[i].innerHTML === "MC"){
+            document.getElementById("inputField").value += "";
         }else{
             document.getElementById("inputField").value  += buttons[i].innerHTML;}}
     ;}
@@ -63,53 +69,38 @@ function checking(){
   });
 
 
-
-//Memory Buttons 
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("memory-list");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-
 //Memory Functions
 var memoryRegister = [];
 
 var memorySave = function() {
-  var num = document.getElementById("inputField");
-  if (Number.isNaN(num)) return;
-    memoryRegister.push(num);
+  var saved = document.getElementById("inputField");
+   memoryRegister.push(saved);
 
-  $('.memory-list').html('');
+  $('.memoryList').html('');
   memoryRegister.forEach(function(element) {
-    $('.memory-list').append('<li>' + element + '</li>')
+    $('.memoryList').append('<li>' + element + '</li>')
   });
 }
 
 var memoryRecall = function() {
-  $('.memory-list').toggle("fast", function(){});
+  $('.memoryList').toggle("fast", function(){});
 }
 
 var memoryClear = function() {
   memoryRegister = [];
-  $('.memory-list').hide("fast", function(){});
-  $('.memory-list').html('');
+  $('.memoryList').hide("fast", function(){});
+  $('.memoryList').html('');
 }
 
 var memoryList = function() {
-  $('.readout').text($(this).text());
+  document.getElementById("inputField").value = "" ;
+  document.getElementById("inputField").value += this.innerHTML;
 }
 
-$('#memory-save').click(memorySave);
-$('#memory-recall').click(memoryRecall);
-$('#memory-clear').click(memoryClear);
-$('.memory-list').on('click', 'li', memoryList);
+$('#memorySave').click(memorySave);
+$('#memoryRecall').click(memoryRecall);
+$('#memoryClear').click(memoryClear);
+$('.memoryList').on('click', 'li', memoryList);
 
 
 /*Sources:
