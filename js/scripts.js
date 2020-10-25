@@ -64,6 +64,54 @@ function checking(){
 
 
 
+//Memory Buttons 
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("memory-list");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+//Memory Functions
+var memoryRegister = [];
+
+var memorySave = function() {
+  var num = document.getElementById("inputField");
+  if (Number.isNaN(num)) return;
+    memoryRegister.push(num);
+
+  $('.memory-list').html('');
+  memoryRegister.forEach(function(element) {
+    $('.memory-list').append('<li>' + element + '</li>')
+  });
+}
+
+var memoryRecall = function() {
+  $('.memory-list').toggle("fast", function(){});
+}
+
+var memoryClear = function() {
+  memoryRegister = [];
+  $('.memory-list').hide("fast", function(){});
+  $('.memory-list').html('');
+}
+
+var memoryList = function() {
+  $('.readout').text($(this).text());
+}
+
+$('#memory-save').click(memorySave);
+$('#memory-recall').click(memoryRecall);
+$('#memory-clear').click(memoryClear);
+$('.memory-list').on('click', 'li', memoryList);
+
+
 /*Sources:
  * 1. Immidiate display on page (window.onload): https://www.w3schools.com/jsref/event_onload.asp
  *  1.1 implementing window.onload: https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
@@ -75,4 +123,5 @@ function checking(){
 *  7. Eval function for calculating string expressions: http://hepunx.rl.ac.uk/~adye/jsspec11/builtin.htm
 *  8. Checking input characters: https://stackoverflow.com/questions/47642022/number-validation-for-javascript-simple-calculator-with-regex
 *  9. Disabling copy and paste on my input field: https://stackoverflow.com/questions/1226574/disable-pasting-text-into-html-form
+* 10. Memory dropbox: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown
  **/

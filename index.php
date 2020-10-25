@@ -23,17 +23,24 @@
         <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@1,200&display=swap" rel="stylesheet">
     </head>
     <body>
+        <p> hi</p>
      <div class="container">
-                <div class="calcHead">
+                <div class="calcHead readout">
                     <input oninput="checking()" class='disablecopypaste' id='inputField' placeholder="Enter values here..." type="text">
                 </div>     
          
-                <div class="calcBody ">
-                <button type="button" class="button disabled" disabled>&nbsp;</button>
-                <button type="button" class="button disabled" disabled>&nbsp;</button>
-                <button type="button" class="button disabled" disabled>&nbsp;</button>
-                <button type="button" class="button work sign" id="add" >+</button>
+         
+                <div class="calcBody">
+                <button type="button" id='memory-save' class="button work">MS</button>
+                  
+                <div class="dropdown">   
+                    <button onclick="myFunction()" type="button" id='memory-recall' class="button work dropbtn" >MR</button>
+                       <div id="myDropdown" class="memory-list"></div>
+                </div>
                 
+                <button type="button" id='memory-clear' class="button work">MC</button>
+                <button type="button" class="button work sign" id="add" >+</button>
+                                
                 <button type="button" class="button work" id="7" >7</button>
                 <button type="button" class="button work" id="8" >8</button>
                 <button type="button" class="button work" id="9">9</button>
@@ -42,12 +49,12 @@
                 <button type="button" class="button work" id="4">4</button>
                 <button type="button" class="button work" id="5">5</button>
                 <button type="button" class="button work" id="6">6</button>
-                <button type="button" class="button work sign" id="multiply"  oninput="checking()">×</button>
+                <button type="button" class="button work sign" id="multiply"  oninput="checking()">*</button>
                 
                 <button type="button" class="button work" id="1">1</button>
                 <button type="button" class="button work" id="2">2</button>
                 <button type="button" class="button work" id="3">3</button>
-                <button type="button" class="button work sign" id="divide">÷</button>
+                <button type="button" class="button work sign" id="divide">/</button>
                 
                 <button type="button" class="button clear work" id="clear">C</button>
                 <button type="button" class="button work" id="0">0</button>

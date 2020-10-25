@@ -47,7 +47,7 @@
                 <button type="button" class="button work" id="1">1</button>
                 <button type="button" class="button work" id="2">2</button>
                 <button type="button" class="button work" id="3">3</button>
-                <button type="button" class="button work sign" id="divide">÷</button>
+                <button type="button" class="button work sign" id="divide">/</button>
                 
                 <button type="button" class="button clear work" id="clear">C</button>
                 <button type="button" class="button work" id="0">0</button>
