@@ -4,14 +4,20 @@ function operations (i){
     return function(){
         if (buttons[i].innerHTML === "+") {
             document.getElementById("inputField").value += "+" ;
-        }else if (buttons[i].innerHTML === "÷") {
+        }else if (buttons[i].innerHTML === "Ã·") {
             document.getElementById("inputField").value += "/" ;
-        }else if(buttons[i].innerHTML === "×"){
+        }else if(buttons[i].innerHTML === "Ã—"){
             document.getElementById("inputField").value += "*";
         }else if (buttons[i].innerHTML === "-") {
             document.getElementById("inputField").value  += "-" ;
         }else if(buttons[i].innerHTML === "^"){
             document.getElementById("inputField").value += "**";
+        }else if(buttons[i].innerHTML === "MS"){
+            document.getElementById("inputField").value += "";
+        }else if(buttons[i].innerHTML === "MR"){
+            document.getElementById("inputField").value += "";
+        }else if(buttons[i].innerHTML === "MC"){
+            document.getElementById("inputField").value += "";
         }else{
             document.getElementById("inputField").value  += buttons[i].innerHTML;}}
     ;}
@@ -63,6 +69,43 @@ function checking(){
   });
 
 
+//Memory Functions
+var memoryRegister = [];
+
+//Saving to list with MS button
+var memorySave = function() {
+  var saved = document.getElementById("inputField").value;
+   memoryRegister.push(saved);
+
+  $('.memoryList').html('');
+  memoryRegister.forEach(function(element) {
+    $('.memoryList').append('<li>' + element + '</li>')
+  });
+}
+
+//Displays list history
+var memoryRecall = function() {
+  $('.memoryList').toggle("fast", function(){});
+}
+
+//Clears history
+var memoryClear = function() {
+  memoryRegister = [];
+  $('.memoryList').hide("fast", function(){});
+  $('.memoryList').html('');
+}
+
+//Clear current input and display number
+var memoryList = function() {
+  document.getElementById("inputField").value = "" ;
+  document.getElementById("inputField").value += this.innerHTML;
+}
+
+$('#memorySave').click(memorySave);
+$('#memoryRecall').click(memoryRecall);
+$('#memoryClear').click(memoryClear);
+$('.memoryList').on('click', 'li', memoryList);
+
 
 /*Sources:
  * 1. Immidiate display on page (window.onload): https://www.w3schools.com/jsref/event_onload.asp
@@ -75,4 +118,5 @@ function checking(){
 *  7. Eval function for calculating string expressions: http://hepunx.rl.ac.uk/~adye/jsspec11/builtin.htm
 *  8. Checking input characters: https://stackoverflow.com/questions/47642022/number-validation-for-javascript-simple-calculator-with-regex
 *  9. Disabling copy and paste on my input field: https://stackoverflow.com/questions/1226574/disable-pasting-text-into-html-form
+* 10. Memory dropbox: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown
  **/
