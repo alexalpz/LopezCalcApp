@@ -27,7 +27,7 @@
                 <div class="calcHead">
                     <input oninput="checking()" class='disablecopypaste' id='inputField' placeholder="Enter values here..." type="text" disabled>
                 </div>     
-                
+    
                 <ul class="memoryList"></ul>
                 <div class="calcBody">
                 <button type="button" id='memorySave' class="button work">MS</button>

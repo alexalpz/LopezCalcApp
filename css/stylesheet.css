@@ -125,14 +125,23 @@ body{
 
 /*Memory Buttons*/
 
+.memoryList li {
+  padding: 3px 10px;
+  text-align: left;
+}
 .memoryList {
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+  left: 31px;
+  top: 18px;
+  min-width: 42px;
+  border: 1px solid #226073;
+  padding: 5px 0;
+  margin: 0;
+  list-style-type: none;
+  background-color: #448096;
+  color: #fff;
+  box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.8);
 }
 /*
 Sources:

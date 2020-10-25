@@ -72,8 +72,9 @@ function checking(){
 //Memory Functions
 var memoryRegister = [];
 
+//Saving to list with MS button
 var memorySave = function() {
-  var saved = document.getElementById("inputField");
+  var saved = document.getElementById("inputField").value;
    memoryRegister.push(saved);
 
   $('.memoryList').html('');
@@ -82,16 +83,19 @@ var memorySave = function() {
   });
 }
 
+//Displays list history
 var memoryRecall = function() {
   $('.memoryList').toggle("fast", function(){});
 }
 
+//Clears history
 var memoryClear = function() {
   memoryRegister = [];
   $('.memoryList').hide("fast", function(){});
   $('.memoryList').html('');
 }
 
+//Clear current input and display number
 var memoryList = function() {
   document.getElementById("inputField").value = "" ;
   document.getElementById("inputField").value += this.innerHTML;
