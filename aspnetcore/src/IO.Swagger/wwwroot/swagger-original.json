@@ -2,7 +2,7 @@
   "openapi" : "3.0.0",
   "info" : {
     "title" : "Lopez Calculator API",
-    "description" : "This is a simple API",
+    "description" : "Simple calculator API",
     "contact" : {
       "email" : "al08583@georgiasouthern.edu"
     },
@@ -15,6 +15,9 @@
   "servers" : [ {
     "url" : "https://virtserver.swaggerhub.com/alexalpz/LopezCalculatorAPI/1.0.0",
     "description" : "SwaggerHub API Auto Mocking"
+  }, {
+    "url" : "https://alexalopez.xyz/api/v1.0/",
+    "description" : "Production Endpoint"
   } ],
   "tags" : [ {
     "name" : "public",
@@ -24,58 +27,51 @@
     "description" : "Accessible to admin only"
   } ],
   "paths" : {
-    "/calculator" : {
+    "/calculator.php" : {
       "get" : {
         "tags" : [ "public" ],
-        "summary" : "Searches values",
-        "description" : "By passing in the appropriate options, you can search for\navailable inventory in the system\n",
-        "operationId" : "searchNumber",
+        "summary" : "Performs caculations",
+        "description" : "Returns the value of two integers",
+        "operationId" : "calcID",
         "parameters" : [ {
           "name" : "num1",
           "in" : "query",
-          "description" : "Passing first number",
+          "description" : "First value",
           "required" : true,
           "style" : "form",
           "explode" : true,
           "schema" : {
-            "type" : "integer",
-            "format" : "int32"
+            "type" : "integer"
           }
         }, {
           "name" : "num2",
           "in" : "query",
-          "description" : "Passing second number",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "minimum" : 0,
-            "type" : "integer",
-            "format" : "int32"
-          }
-        }, {
-          "name" : "operation",
-          "in" : "query",
-          "description" : "Operation for values",
+          "description" : "Second value",
           "required" : true,
           "style" : "form",
           "explode" : true,
           "schema" : {
-            "maximum" : 50,
-            "minimum" : 0,
-            "type" : "string"
+            "type" : "integer"
+          }
+        }, {
+          "name" : "operation",
+          "in" : "query",
+          "description" : "Math operation for the values to perform",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "enum" : [ "-", "+", "*", "/", "**" ]
           }
         } ],
         "responses" : {
           "200" : {
-            "description" : "search results matching criteria",
+            "description" : "Calculation result",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/InventoryItem"
-                  },
+                  "type" : "number",
                   "x-content-type" : "application/json"
                 }
               }
@@ -85,57 +81,51 @@
             "description" : "bad input parameter"
           }
         }
+      }
+    },
+    "/memory.php" : {
+      "get" : {
+        "tags" : [ "public" ],
+        "summary" : "Retrieves memory value",
+        "description" : "Return value stored in MR",
+        "operationId" : "memoryID",
+        "responses" : {
+          "200" : {
+            "description" : "Memory value returned",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "number",
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          }
+        }
       },
       "put" : {
         "tags" : [ "public" ],
-        "summary" : "Updates values",
-        "description" : "By passing in the appropriate options, you can search for\navailable inventory in the system\n",
-        "operationId" : "updateNumber",
+        "summary" : "Updates specified value",
+        "description" : "Updates values in memory",
+        "operationId" : "updateMemory",
         "parameters" : [ {
           "name" : "num1",
           "in" : "query",
-          "description" : "Passing first number",
+          "description" : "Value to add in memory",
           "required" : true,
           "style" : "form",
           "explode" : true,
           "schema" : {
-            "type" : "integer",
-            "format" : "int32"
-          }
-        }, {
-          "name" : "num2",
-          "in" : "query",
-          "description" : "Passing second number",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "minimum" : 0,
-            "type" : "integer",
-            "format" : "int32"
-          }
-        }, {
-          "name" : "operation",
-          "in" : "query",
-          "description" : "Operation for values",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "minimum" : 1,
-            "type" : "object"
+            "type" : "number"
           }
         } ],
         "responses" : {
           "200" : {
-            "description" : "search results matching criteria",
+            "description" : "Memory has been updated",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/InventoryItem"
-                  },
+                  "type" : "number",
                   "x-content-type" : "application/json"
                 }
               }
@@ -147,88 +137,38 @@
         }
       },
       "post" : {
-        "tags" : [ "admin" ],
-        "summary" : "Creates a resource",
-        "description" : "Adds an item to the system",
-        "operationId" : "addsNumber",
-        "requestBody" : {
-          "description" : "Inventory item to add",
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/InventoryItem"
-              }
-            }
-          }
-        },
-        "responses" : {
-          "201" : {
-            "description" : "item created"
-          },
-          "400" : {
-            "description" : "invalid input, object invalid"
-          },
-          "409" : {
-            "description" : "an existing item already exists"
-          }
-        }
-      },
-      "delete" : {
-        "tags" : [ "admin" ],
-        "summary" : "Deletes values",
-        "description" : "By passing in the appropriate options, you can search for\navailable inventory in the system\n",
-        "operationId" : "deletesNumber",
+        "tags" : [ "public" ],
+        "summary" : "Creates values in memory",
+        "description" : "Stores specified values in memory",
+        "operationId" : "createMemory",
         "parameters" : [ {
           "name" : "num1",
           "in" : "query",
-          "description" : "Passing first number",
+          "description" : "First val",
           "required" : true,
           "style" : "form",
           "explode" : true,
           "schema" : {
-            "type" : "integer",
-            "format" : "int32"
-          }
-        }, {
-          "name" : "num2",
-          "in" : "query",
-          "description" : "Passing second number",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "minimum" : 0,
-            "type" : "integer",
-            "format" : "int32"
-          }
-        }, {
-          "name" : "operation",
-          "in" : "query",
-          "description" : "Operation for values",
-          "required" : true,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "maximum" : 50,
-            "minimum" : 0,
-            "type" : "integer",
-            "format" : "int32"
+            "type" : "integer"
           }
         } ],
         "responses" : {
           "200" : {
-            "description" : "search results matching criteria",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/InventoryItem"
-                  },
-                  "x-content-type" : "application/json"
-                }
-              }
-            }
+            "description" : "Value was created and stored."
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "public" ],
+        "summary" : "Deletes memory value",
+        "description" : "Clears the memory",
+        "operationId" : "deleteMemory",
+        "responses" : {
+          "200" : {
+            "description" : "Memory Deleted"
           },
           "400" : {
             "description" : "bad input parameter"
@@ -239,62 +179,8 @@
   },
   "components" : {
     "schemas" : {
-      "InventoryItem" : {
-        "required" : [ "id", "manufacturer", "name", "releaseDate" ],
-        "type" : "object",
-        "properties" : {
-          "id" : {
-            "type" : "string",
-            "format" : "uuid",
-            "example" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
-          },
-          "name" : {
-            "type" : "string",
-            "example" : "Widget Adapter"
-          },
-          "releaseDate" : {
-            "type" : "string",
-            "format" : "date-time",
-            "example" : "2016-08-29T09:12:33.001Z"
-          },
-          "manufacturer" : {
-            "$ref" : "#/components/schemas/Manufacturer"
-          }
-        },
-        "example" : {
-          "releaseDate" : "2016-08-29T09:12:33.001Z",
-          "name" : "Widget Adapter",
-          "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
-          "manufacturer" : {
-            "phone" : "408-867-5309",
-            "name" : "ACME Corporation",
-            "homePage" : "https://www.acme-corp.com"
-          }
-        }
-      },
-      "Manufacturer" : {
-        "required" : [ "name" ],
-        "type" : "object",
-        "properties" : {
-          "name" : {
-            "type" : "string",
-            "example" : "ACME Corporation"
-          },
-          "homePage" : {
-            "type" : "string",
-            "format" : "url",
-            "example" : "https://www.acme-corp.com"
-          },
-          "phone" : {
-            "type" : "string",
-            "example" : "408-867-5309"
-          }
-        },
-        "example" : {
-          "phone" : "408-867-5309",
-          "name" : "ACME Corporation",
-          "homePage" : "https://www.acme-corp.com"
-        }
+      "calculator" : {
+        "description" : "My simple calculator application"
       }
     }
   }

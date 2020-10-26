@@ -1,7 +1,7 @@
 /*
  * Lopez Calculator API
  *
- * This is a simple API
+ * Simple calculator API
  *
  * OpenAPI spec version: 1.0.0
  * Contact: al08583@georgiasouthern.edu
@@ -28,62 +28,126 @@ namespace IO.Swagger.Controllers
     public class PublicApiController : ControllerBase
     { 
         /// <summary>
-        /// Searches values
+        /// Performs caculations
         /// </summary>
-        /// <remarks>By passing in the appropriate options, you can search for available inventory in the system </remarks>
-        /// <param name="num1">Passing first number</param>
-        /// <param name="operation">Operation for values</param>
-        /// <param name="num2">Passing second number</param>
-        /// <response code="200">search results matching criteria</response>
+        /// <remarks>Returns the value of two integers</remarks>
+        /// <param name="num1">First value</param>
+        /// <param name="num2">Second value</param>
+        /// <param name="operation">Math operation for the values to perform</param>
+        /// <response code="200">Calculation result</response>
         /// <response code="400">bad input parameter</response>
         [HttpGet]
-        [Route("/alexalpz/LopezCalculatorAPI/1.0.0/calculator")]
+        [Route("/alexalpz/LopezCalculatorAPI/1.0.0/calculator.php")]
         [ValidateModelState]
-        [SwaggerOperation("SearchNumber")]
-        [SwaggerResponse(statusCode: 200, type: typeof(List<InventoryItem>), description: "search results matching criteria")]
-        public virtual IActionResult SearchNumber([FromQuery][Required()]int? num1, [FromQuery][Required()][Range(0, 50)]string operation, [FromQuery]int? num2)
+        [SwaggerOperation("CalcID")]
+        [SwaggerResponse(statusCode: 200, type: typeof(decimal?), description: "Calculation result")]
+        public virtual IActionResult CalcID([FromQuery][Required()]int? num1, [FromQuery][Required()]int? num2, [FromQuery]string operation)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(List<InventoryItem>));
+            // return StatusCode(200, default(decimal?));
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400);
             string exampleJson = null;
-            exampleJson = "[ {\n  \"releaseDate\" : \"2016-08-29T09:12:33.001Z\",\n  \"name\" : \"Widget Adapter\",\n  \"id\" : \"d290f1ee-6c54-4b01-90e6-d701748f0851\",\n  \"manufacturer\" : {\n    \"phone\" : \"408-867-5309\",\n    \"name\" : \"ACME Corporation\",\n    \"homePage\" : \"https://www.acme-corp.com\"\n  }\n}, {\n  \"releaseDate\" : \"2016-08-29T09:12:33.001Z\",\n  \"name\" : \"Widget Adapter\",\n  \"id\" : \"d290f1ee-6c54-4b01-90e6-d701748f0851\",\n  \"manufacturer\" : {\n    \"phone\" : \"408-867-5309\",\n    \"name\" : \"ACME Corporation\",\n    \"homePage\" : \"https://www.acme-corp.com\"\n  }\n} ]";
+            exampleJson = "0.8008281904610115";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<List<InventoryItem>>(exampleJson)
-                        : default(List<InventoryItem>);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<decimal?>(exampleJson)
+                        : default(decimal?);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 
         /// <summary>
-        /// Updates values
+        /// Creates values in memory
         /// </summary>
-        /// <remarks>By passing in the appropriate options, you can search for available inventory in the system </remarks>
-        /// <param name="num1">Passing first number</param>
-        /// <param name="num2">Passing second number</param>
-        /// <param name="operation">Operation for values</param>
-        /// <response code="200">search results matching criteria</response>
+        /// <remarks>Stores specified values in memory</remarks>
+        /// <param name="num1">First val</param>
+        /// <response code="200">Value was created and stored.</response>
         /// <response code="400">bad input parameter</response>
-        [HttpPut]
-        [Route("/alexalpz/LopezCalculatorAPI/1.0.0/calculator")]
+        [HttpPost]
+        [Route("/alexalpz/LopezCalculatorAPI/1.0.0/memory.php")]
         [ValidateModelState]
-        [SwaggerOperation("UpdateNumber")]
-        [SwaggerResponse(statusCode: 200, type: typeof(List<InventoryItem>), description: "search results matching criteria")]
-        public virtual IActionResult UpdateNumber([FromQuery][Required()]int? num1, [FromQuery]int? num2, [FromQuery]Object operation)
+        [SwaggerOperation("CreateMemory")]
+        public virtual IActionResult CreateMemory([FromQuery][Required()]int? num1)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(List<InventoryItem>));
+            // return StatusCode(200);
+
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400);
+
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Deletes memory value
+        /// </summary>
+        /// <remarks>Clears the memory</remarks>
+        /// <response code="200">Memory Deleted</response>
+        /// <response code="400">bad input parameter</response>
+        [HttpDelete]
+        [Route("/alexalpz/LopezCalculatorAPI/1.0.0/memory.php")]
+        [ValidateModelState]
+        [SwaggerOperation("DeleteMemory")]
+        public virtual IActionResult DeleteMemory()
+        { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200);
+
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400);
+
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Retrieves memory value
+        /// </summary>
+        /// <remarks>Return value stored in MR</remarks>
+        /// <response code="200">Memory value returned</response>
+        [HttpGet]
+        [Route("/alexalpz/LopezCalculatorAPI/1.0.0/memory.php")]
+        [ValidateModelState]
+        [SwaggerOperation("MemoryID")]
+        [SwaggerResponse(statusCode: 200, type: typeof(decimal?), description: "Memory value returned")]
+        public virtual IActionResult MemoryID()
+        { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(decimal?));
+            string exampleJson = null;
+            exampleJson = "0.8008281904610115";
+            
+                        var example = exampleJson != null
+                        ? JsonConvert.DeserializeObject<decimal?>(exampleJson)
+                        : default(decimal?);            //TODO: Change the data returned
+            return new ObjectResult(example);
+        }
+
+        /// <summary>
+        /// Updates specified value
+        /// </summary>
+        /// <remarks>Updates values in memory</remarks>
+        /// <param name="num1">Value to add in memory</param>
+        /// <response code="200">Memory has been updated</response>
+        /// <response code="400">bad input parameter</response>
+        [HttpPut]
+        [Route("/alexalpz/LopezCalculatorAPI/1.0.0/memory.php")]
+        [ValidateModelState]
+        [SwaggerOperation("UpdateMemory")]
+        [SwaggerResponse(statusCode: 200, type: typeof(decimal?), description: "Memory has been updated")]
+        public virtual IActionResult UpdateMemory([FromQuery][Required()]decimal? num1)
+        { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(decimal?));
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400);
             string exampleJson = null;
-            exampleJson = "[ {\n  \"releaseDate\" : \"2016-08-29T09:12:33.001Z\",\n  \"name\" : \"Widget Adapter\",\n  \"id\" : \"d290f1ee-6c54-4b01-90e6-d701748f0851\",\n  \"manufacturer\" : {\n    \"phone\" : \"408-867-5309\",\n    \"name\" : \"ACME Corporation\",\n    \"homePage\" : \"https://www.acme-corp.com\"\n  }\n}, {\n  \"releaseDate\" : \"2016-08-29T09:12:33.001Z\",\n  \"name\" : \"Widget Adapter\",\n  \"id\" : \"d290f1ee-6c54-4b01-90e6-d701748f0851\",\n  \"manufacturer\" : {\n    \"phone\" : \"408-867-5309\",\n    \"name\" : \"ACME Corporation\",\n    \"homePage\" : \"https://www.acme-corp.com\"\n  }\n} ]";
+            exampleJson = "0.8008281904610115";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<List<InventoryItem>>(exampleJson)
-                        : default(List<InventoryItem>);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<decimal?>(exampleJson)
+                        : default(decimal?);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
     }

@@ -1,7 +1,7 @@
 /*
  * Lopez Calculator API
  *
- * This is a simple API
+ * Simple calculator API
  *
  * OpenAPI spec version: 1.0.0
  * Contact: al08583@georgiasouthern.edu
