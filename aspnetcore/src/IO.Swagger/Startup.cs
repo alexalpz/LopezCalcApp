@@ -22,7 +22,7 @@ using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using IO.Swagger.Filters;
-
+using IO.Swagger.Security;
 
 namespace IO.Swagger
 {
@@ -66,6 +66,9 @@ namespace IO.Swagger
                 })
                 .AddXmlSerializerFormatters();
 
+            services.AddAuthentication(BasicAuthenticationHandler.SchemeName)
+                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>(BasicAuthenticationHandler.SchemeName, null);
+
 
             services
                 .AddSwaggerGen(c =>
@@ -74,7 +77,7 @@ namespace IO.Swagger
                     {
                         Version = "1.0.0",
                         Title = "Lopez Calculator API",
-                        Description = "Lopez Calculator API (ASP.NET Core 3.0)",
+                        Description = "Lopez Calculator API (ASP.NET Core 3.1)",
                         Contact = new OpenApiContact()
                         {
                            Name = "Swagger Codegen Contributors",
@@ -86,7 +89,7 @@ namespace IO.Swagger
                     c.CustomSchemaIds(type => type.FullName);
                     c.IncludeXmlComments($"{AppContext.BaseDirectory}{Path.DirectorySeparatorChar}{_hostingEnv.ApplicationName}.xml");
                     // Sets the basePath property in the Swagger document generated
-                    c.DocumentFilter<BasePathFilter>("/alexalpz/LopezCalculatorAPI/1.0.0");
+                    c.DocumentFilter<BasePathFilter>("/api/v.1.0/");
 
                     // Include DataAnnotation attributes on Controller Action parameters as Swagger validation rules (e.g required, pattern, ..)
                     // Use [ValidateModelState] on Actions to actually validate it in C# as well!

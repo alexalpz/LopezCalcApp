@@ -13,11 +13,14 @@
     "version" : "1.0.0"
   },
   "servers" : [ {
+    "url" : "https://alexalopez.xyz/api/v.1.0/",
+    "description" : "Production Endpoint"
+  }, {
     "url" : "https://virtserver.swaggerhub.com/alexalpz/LopezCalculatorAPI/1.0.0",
     "description" : "SwaggerHub API Auto Mocking"
-  }, {
-    "url" : "https://alexalopez.xyz/api/v1.0/",
-    "description" : "Production Endpoint"
+  } ],
+  "security" : [ {
+    "oAuthList" : [ "read", "write" ]
   } ],
   "tags" : [ {
     "name" : "public",
@@ -72,6 +75,7 @@
               "application/json" : {
                 "schema" : {
                   "type" : "number",
+                  "format" : "date-time",
                   "x-content-type" : "application/json"
                 }
               }
@@ -79,8 +83,17 @@
           },
           "400" : {
             "description" : "bad input parameter"
+          },
+          "401" : {
+            "description" : "Not authenticated"
+          },
+          "403" : {
+            "description" : "Access token does not have the required scope"
           }
-        }
+        },
+        "security" : [ {
+          "oAuthList" : [ "read" ]
+        } ]
       }
     },
     "/memory.php" : {
@@ -100,8 +113,17 @@
                 }
               }
             }
+          },
+          "401" : {
+            "description" : "Not authenticated"
+          },
+          "403" : {
+            "description" : "Access token does not have the required scope"
           }
-        }
+        },
+        "security" : [ {
+          "oAuthList" : [ "read" ]
+        } ]
       },
       "put" : {
         "tags" : [ "public" ],
@@ -132,7 +154,15 @@
             }
           },
           "400" : {
-            "description" : "bad input parameter"
+            "description" : "bad input parameter",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "number",
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
           }
         }
       },
@@ -154,12 +184,37 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Value was created and stored."
+            "description" : "Value was created and stored.",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "number",
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
           },
           "400" : {
-            "description" : "bad input parameter"
+            "description" : "bad input parameter",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "number",
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Not authenticated"
+          },
+          "403" : {
+            "description" : "Access token does not have the required scope"
           }
-        }
+        },
+        "security" : [ {
+          "oAuthList" : [ "write" ]
+        } ]
       },
       "delete" : {
         "tags" : [ "public" ],
@@ -178,9 +233,25 @@
     }
   },
   "components" : {
-    "schemas" : {
-      "calculator" : {
-        "description" : "My simple calculator application"
+    "schemas" : { },
+    "securitySchemes" : {
+      "oAuthList" : {
+        "type" : "oauth2",
+        "description" : "This API uses OAuth 2 with the implicit grant flow. [More info](https://api.example.com/docs/auth)",
+        "flows" : {
+          "implicit" : {
+            "authorizationUrl" : "https://alexalopez.xyz/api/v.1.0/",
+            "scopes" : {
+              "read" : "Retrieve data",
+              "write" : "Create data"
+            }
+          }
+        }
+      },
+      "basicAuth" : {
+        "type" : "http",
+        "description" : "Basic HTTP authentication. Allowed headers-- Authorization: Basic <api_key> | Authorization: Basic <base64 hash of `api_key:`>",
+        "scheme" : "basic"
       }
     }
   }

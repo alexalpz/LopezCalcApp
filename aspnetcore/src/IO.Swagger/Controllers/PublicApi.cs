@@ -15,7 +15,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using IO.Swagger.Attributes;
-
+using IO.Swagger.Security;
 using Microsoft.AspNetCore.Authorization;
 using IO.Swagger.Models;
 
@@ -36,8 +36,10 @@ namespace IO.Swagger.Controllers
         /// <param name="operation">Math operation for the values to perform</param>
         /// <response code="200">Calculation result</response>
         /// <response code="400">bad input parameter</response>
+        /// <response code="401">Not authenticated</response>
+        /// <response code="403">Access token does not have the required scope</response>
         [HttpGet]
-        [Route("/alexalpz/LopezCalculatorAPI/1.0.0/calculator.php")]
+        [Route("/api/v.1.0//calculator.php")]
         [ValidateModelState]
         [SwaggerOperation("CalcID")]
         [SwaggerResponse(statusCode: 200, type: typeof(decimal?), description: "Calculation result")]
@@ -48,6 +50,12 @@ namespace IO.Swagger.Controllers
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400);
+
+            //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(401);
+
+            //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(403);
             string exampleJson = null;
             exampleJson = "0.8008281904610115";
             
@@ -64,19 +72,34 @@ namespace IO.Swagger.Controllers
         /// <param name="num1">First val</param>
         /// <response code="200">Value was created and stored.</response>
         /// <response code="400">bad input parameter</response>
+        /// <response code="401">Not authenticated</response>
+        /// <response code="403">Access token does not have the required scope</response>
         [HttpPost]
-        [Route("/alexalpz/LopezCalculatorAPI/1.0.0/memory.php")]
+        [Route("/api/v.1.0//memory.php")]
         [ValidateModelState]
         [SwaggerOperation("CreateMemory")]
+        [SwaggerResponse(statusCode: 200, type: typeof(decimal?), description: "Value was created and stored.")]
+        [SwaggerResponse(statusCode: 400, type: typeof(decimal?), description: "bad input parameter")]
         public virtual IActionResult CreateMemory([FromQuery][Required()]int? num1)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200);
+            // return StatusCode(200, default(decimal?));
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400);
+            // return StatusCode(400, default(decimal?));
 
-            throw new NotImplementedException();
+            //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(401);
+
+            //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(403);
+            string exampleJson = null;
+            exampleJson = "0.8008281904610115";
+            
+                        var example = exampleJson != null
+                        ? JsonConvert.DeserializeObject<decimal?>(exampleJson)
+                        : default(decimal?);            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
@@ -86,7 +109,7 @@ namespace IO.Swagger.Controllers
         /// <response code="200">Memory Deleted</response>
         /// <response code="400">bad input parameter</response>
         [HttpDelete]
-        [Route("/alexalpz/LopezCalculatorAPI/1.0.0/memory.php")]
+        [Route("/api/v.1.0//memory.php")]
         [ValidateModelState]
         [SwaggerOperation("DeleteMemory")]
         public virtual IActionResult DeleteMemory()
@@ -105,8 +128,10 @@ namespace IO.Swagger.Controllers
         /// </summary>
         /// <remarks>Return value stored in MR</remarks>
         /// <response code="200">Memory value returned</response>
+        /// <response code="401">Not authenticated</response>
+        /// <response code="403">Access token does not have the required scope</response>
         [HttpGet]
-        [Route("/alexalpz/LopezCalculatorAPI/1.0.0/memory.php")]
+        [Route("/api/v.1.0//memory.php")]
         [ValidateModelState]
         [SwaggerOperation("MemoryID")]
         [SwaggerResponse(statusCode: 200, type: typeof(decimal?), description: "Memory value returned")]
@@ -114,6 +139,12 @@ namespace IO.Swagger.Controllers
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(decimal?));
+
+            //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(401);
+
+            //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(403);
             string exampleJson = null;
             exampleJson = "0.8008281904610115";
             
@@ -131,17 +162,18 @@ namespace IO.Swagger.Controllers
         /// <response code="200">Memory has been updated</response>
         /// <response code="400">bad input parameter</response>
         [HttpPut]
-        [Route("/alexalpz/LopezCalculatorAPI/1.0.0/memory.php")]
+        [Route("/api/v.1.0//memory.php")]
         [ValidateModelState]
         [SwaggerOperation("UpdateMemory")]
         [SwaggerResponse(statusCode: 200, type: typeof(decimal?), description: "Memory has been updated")]
+        [SwaggerResponse(statusCode: 400, type: typeof(decimal?), description: "bad input parameter")]
         public virtual IActionResult UpdateMemory([FromQuery][Required()]decimal? num1)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(decimal?));
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400);
+            // return StatusCode(400, default(decimal?));
             string exampleJson = null;
             exampleJson = "0.8008281904610115";
             
