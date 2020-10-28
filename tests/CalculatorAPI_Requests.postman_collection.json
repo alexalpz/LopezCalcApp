@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "5f92b836-6fbe-4777-a89c-2f12df2b286a",
+		"name": "CalculatorAPI_Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Calculations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://alexalopez.xyz/api/v.1.0/calculator.php?num1=9&num2=5&operation=*",
+					"protocol": "https",
+					"host": [
+						"alexalopez",
+						"xyz"
+					],
+					"path": [
+						"api",
+						"v.1.0",
+						"calculator.php"
+					],
+					"query": [
+						{
+							"key": "num1",
+							"value": "9"
+						},
+						{
+							"key": "num2",
+							"value": "5"
+						},
+						{
+							"key": "operation",
+							"value": "*"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Memory Recall",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://alexalopez.xyz/api/v.1.0/memory.php",
+					"protocol": "https",
+					"host": [
+						"alexalopez",
+						"xyz"
+					],
+					"path": [
+						"api",
+						"v.1.0",
+						"memory.php"
+					],
+					"query": [
+						{
+							"key": "num1",
+							"value": "4",
+							"disabled": true
+						},
+						{
+							"key": "num2",
+							"value": "8",
+							"disabled": true
+						},
+						{
+							"key": "operation",
+							"value": "+",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Memory Store",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "value",
+							"value": "9",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://alexalopez.xyz/api/v.1.0/memory.php?value=5",
+					"protocol": "https",
+					"host": [
+						"alexalopez",
+						"xyz"
+					],
+					"path": [
+						"api",
+						"v.1.0",
+						"memory.php"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Memory Add",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"value\": 6}"
+				},
+				"url": {
+					"raw": "https://alexalopez.xyz/api/v.1.0/memory.php",
+					"protocol": "https",
+					"host": [
+						"alexalopez",
+						"xyz"
+					],
+					"path": [
+						"api",
+						"v.1.0",
+						"memory.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Memory Clear",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://alexalopez.xyz/api/v.1.0/memory.php",
+					"protocol": "https",
+					"host": [
+						"alexalopez",
+						"xyz"
+					],
+					"path": [
+						"api",
+						"v.1.0",
+						"memory.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Memory Head",
+			"request": {
+				"method": "HEAD",
+				"header": [],
+				"url": {
+					"raw": "https://alexalopez.xyz/api/v.1.0/memory.php",
+					"protocol": "https",
+					"host": [
+						"alexalopez",
+						"xyz"
+					],
+					"path": [
+						"api",
+						"v.1.0",
+						"memory.php"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
