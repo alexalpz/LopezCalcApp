@@ -69,6 +69,9 @@ namespace IO.Swagger
             services.AddAuthentication(BasicAuthenticationHandler.SchemeName)
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>(BasicAuthenticationHandler.SchemeName, null);
 
+            services.AddAuthentication(BearerAuthenticationHandler.SchemeName)
+                .AddScheme<AuthenticationSchemeOptions, BearerAuthenticationHandler>(BearerAuthenticationHandler.SchemeName, null);
+
 
             services
                 .AddSwaggerGen(c =>

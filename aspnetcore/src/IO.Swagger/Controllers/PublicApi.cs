@@ -40,6 +40,7 @@ namespace IO.Swagger.Controllers
         /// <response code="403">Access token does not have the required scope</response>
         [HttpGet]
         [Route("/api/v.1.0//calculator.php")]
+        [Authorize(AuthenticationSchemes = BasicAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("CalcID")]
         [SwaggerResponse(statusCode: 200, type: typeof(decimal?), description: "Calculation result")]
@@ -76,6 +77,7 @@ namespace IO.Swagger.Controllers
         /// <response code="403">Access token does not have the required scope</response>
         [HttpPost]
         [Route("/api/v.1.0//memory.php")]
+        [Authorize(AuthenticationSchemes = BasicAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("CreateMemory")]
         [SwaggerResponse(statusCode: 200, type: typeof(decimal?), description: "Value was created and stored.")]
@@ -110,6 +112,7 @@ namespace IO.Swagger.Controllers
         /// <response code="400">bad input parameter</response>
         [HttpDelete]
         [Route("/api/v.1.0//memory.php")]
+        [Authorize(AuthenticationSchemes = BasicAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("DeleteMemory")]
         public virtual IActionResult DeleteMemory()
@@ -132,6 +135,7 @@ namespace IO.Swagger.Controllers
         /// <response code="403">Access token does not have the required scope</response>
         [HttpGet]
         [Route("/api/v.1.0//memory.php")]
+        [Authorize(AuthenticationSchemes = BasicAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("MemoryID")]
         [SwaggerResponse(statusCode: 200, type: typeof(decimal?), description: "Memory value returned")]
@@ -163,6 +167,7 @@ namespace IO.Swagger.Controllers
         /// <response code="400">bad input parameter</response>
         [HttpPut]
         [Route("/api/v.1.0//memory.php")]
+        [Authorize(AuthenticationSchemes = BasicAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("UpdateMemory")]
         [SwaggerResponse(statusCode: 200, type: typeof(decimal?), description: "Memory has been updated")]

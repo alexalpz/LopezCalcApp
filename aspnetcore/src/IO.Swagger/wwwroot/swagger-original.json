@@ -93,6 +93,10 @@
         },
         "security" : [ {
           "oAuthList" : [ "read" ]
+        }, {
+          "basicAuth" : [ ]
+        }, {
+          "bearerAuth" : [ ]
         } ]
       }
     },
@@ -123,6 +127,10 @@
         },
         "security" : [ {
           "oAuthList" : [ "read" ]
+        }, {
+          "basicAuth" : [ ]
+        }, {
+          "bearerAuth" : [ ]
         } ]
       },
       "put" : {
@@ -164,7 +172,12 @@
               }
             }
           }
-        }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        }, {
+          "bearerAuth" : [ ]
+        } ]
       },
       "post" : {
         "tags" : [ "public" ],
@@ -214,6 +227,10 @@
         },
         "security" : [ {
           "oAuthList" : [ "write" ]
+        }, {
+          "basicAuth" : [ ]
+        }, {
+          "bearerAuth" : [ ]
         } ]
       },
       "delete" : {
@@ -228,7 +245,12 @@
           "400" : {
             "description" : "bad input parameter"
           }
-        }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        }, {
+          "bearerAuth" : [ ]
+        } ]
       }
     }
   },
@@ -252,6 +274,12 @@
         "type" : "http",
         "description" : "Basic HTTP authentication. Allowed headers-- Authorization: Basic <api_key> | Authorization: Basic <base64 hash of `api_key:`>",
         "scheme" : "basic"
+      },
+      "bearerAuth" : {
+        "type" : "http",
+        "description" : "Bearer HTTP authentication. Allowed headers-- Authorization: Bearer <access-token>",
+        "scheme" : "bearer",
+        "bearerFormat" : "auth-scheme"
       }
     }
   }
