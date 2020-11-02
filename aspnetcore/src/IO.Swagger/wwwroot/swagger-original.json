@@ -2,7 +2,7 @@
   "openapi" : "3.0.0",
   "info" : {
     "title" : "Lopez Calculator API",
-    "description" : "Simple calculator API",
+    "description" : "Simple calculator API. To authorize, add the following in headers `Authorization:Basic VIP_Ticket`",
     "contact" : {
       "email" : "al08583@georgiasouthern.edu"
     },
@@ -20,7 +20,13 @@
     "description" : "SwaggerHub API Auto Mocking"
   } ],
   "security" : [ {
-    "oAuthList" : [ "read", "write" ]
+    "basicAuth" : [ ]
+  }, {
+    "bearerAuth" : [ ]
+  }, {
+    "oAuthMemory" : [ "write", "read" ]
+  }, {
+    "oAuthCalculator" : [ "write", "read" ]
   } ],
   "tags" : [ {
     "name" : "public",
@@ -90,21 +96,14 @@
           "403" : {
             "description" : "Access token does not have the required scope"
           }
-        },
-        "security" : [ {
-          "oAuthList" : [ "read" ]
-        }, {
-          "basicAuth" : [ ]
-        }, {
-          "bearerAuth" : [ ]
-        } ]
+        }
       }
     },
     "/memory.php" : {
       "get" : {
         "tags" : [ "public" ],
         "summary" : "Retrieves memory value",
-        "description" : "Return value stored in MR",
+        "description" : "Return value stored in memory",
         "operationId" : "memoryID",
         "responses" : {
           "200" : {
@@ -120,18 +119,8 @@
           },
           "401" : {
             "description" : "Not authenticated"
-          },
-          "403" : {
-            "description" : "Access token does not have the required scope"
           }
-        },
-        "security" : [ {
-          "oAuthList" : [ "read" ]
-        }, {
-          "basicAuth" : [ ]
-        }, {
-          "bearerAuth" : [ ]
-        } ]
+        }
       },
       "put" : {
         "tags" : [ "public" ],
@@ -139,9 +128,9 @@
         "description" : "Updates values in memory",
         "operationId" : "updateMemory",
         "parameters" : [ {
-          "name" : "num1",
+          "name" : "value",
           "in" : "query",
-          "description" : "Value to add in memory",
+          "description" : "Value to update in memory",
           "required" : true,
           "style" : "form",
           "explode" : true,
@@ -162,22 +151,12 @@
             }
           },
           "400" : {
-            "description" : "bad input parameter",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "number",
-                  "x-content-type" : "application/json"
-                }
-              }
-            }
+            "description" : "bad input parameter"
+          },
+          "401" : {
+            "description" : "Not authenticated"
           }
-        },
-        "security" : [ {
-          "basicAuth" : [ ]
-        }, {
-          "bearerAuth" : [ ]
-        } ]
+        }
       },
       "post" : {
         "tags" : [ "public" ],
@@ -185,9 +164,9 @@
         "description" : "Stores specified values in memory",
         "operationId" : "createMemory",
         "parameters" : [ {
-          "name" : "num1",
+          "name" : "value",
           "in" : "query",
-          "description" : "First val",
+          "description" : "Value to store",
           "required" : true,
           "style" : "form",
           "explode" : true,
@@ -220,18 +199,8 @@
           },
           "401" : {
             "description" : "Not authenticated"
-          },
-          "403" : {
-            "description" : "Access token does not have the required scope"
           }
-        },
-        "security" : [ {
-          "oAuthList" : [ "write" ]
-        }, {
-          "basicAuth" : [ ]
-        }, {
-          "bearerAuth" : [ ]
-        } ]
+        }
       },
       "delete" : {
         "tags" : [ "public" ],
@@ -244,42 +213,53 @@
           },
           "400" : {
             "description" : "bad input parameter"
+          },
+          "401" : {
+            "description" : "Not authenticated"
           }
-        },
-        "security" : [ {
-          "basicAuth" : [ ]
-        }, {
-          "bearerAuth" : [ ]
-        } ]
+        }
       }
     }
   },
   "components" : {
     "schemas" : { },
     "securitySchemes" : {
-      "oAuthList" : {
-        "type" : "oauth2",
-        "description" : "This API uses OAuth 2 with the implicit grant flow. [More info](https://api.example.com/docs/auth)",
-        "flows" : {
-          "implicit" : {
-            "authorizationUrl" : "https://alexalopez.xyz/api/v.1.0/",
-            "scopes" : {
-              "read" : "Retrieve data",
-              "write" : "Create data"
-            }
-          }
-        }
-      },
       "basicAuth" : {
         "type" : "http",
-        "description" : "Basic HTTP authentication. Allowed headers-- Authorization: Basic <api_key> | Authorization: Basic <base64 hash of `api_key:`>",
+        "description" : "Basic HTTP authentication. Allowed headers-- Authorization: Basic <VIP_Ticket> | Authorization: Basic <base64 hash of `VIP_Ticket:`>",
         "scheme" : "basic"
       },
       "bearerAuth" : {
         "type" : "http",
-        "description" : "Bearer HTTP authentication. Allowed headers-- Authorization: Bearer <access-token>",
+        "description" : "Bearer HTTP authentication. Allowed headers-- Authorization: Bearer <VIP_Ticket>",
         "scheme" : "bearer",
         "bearerFormat" : "auth-scheme"
+      },
+      "oAuthMemory" : {
+        "type" : "oauth2",
+        "description" : "This API uses OAuth 2 with the implicit grant flow. [More info](https://api.example.com/docs/auth)",
+        "flows" : {
+          "implicit" : {
+            "authorizationUrl" : "https://alexalopez.xyz/api/v.1.0/memory.php",
+            "scopes" : {
+              "read" : "Read data",
+              "write" : "Write data"
+            }
+          }
+        }
+      },
+      "oAuthCalculator" : {
+        "type" : "oauth2",
+        "description" : "This API uses OAuth 2 with the implicit grant flow. [More info](https://api.example.com/docs/auth)",
+        "flows" : {
+          "implicit" : {
+            "authorizationUrl" : "https://alexalopez.xyz/api/v.1.0/calculator.php",
+            "scopes" : {
+              "read" : "Read data",
+              "write" : "Write data"
+            }
+          }
+        }
       }
     }
   }

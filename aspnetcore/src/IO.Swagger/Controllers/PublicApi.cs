@@ -1,7 +1,7 @@
 /*
  * Lopez Calculator API
  *
- * Simple calculator API
+ * Simple calculator API. To authorize, add the following in headers `Authorization:Basic VIP_Ticket`
  *
  * OpenAPI spec version: 1.0.0
  * Contact: al08583@georgiasouthern.edu
@@ -70,11 +70,10 @@ namespace IO.Swagger.Controllers
         /// Creates values in memory
         /// </summary>
         /// <remarks>Stores specified values in memory</remarks>
-        /// <param name="num1">First val</param>
+        /// <param name="value">Value to store</param>
         /// <response code="200">Value was created and stored.</response>
         /// <response code="400">bad input parameter</response>
         /// <response code="401">Not authenticated</response>
-        /// <response code="403">Access token does not have the required scope</response>
         [HttpPost]
         [Route("/api/v.1.0//memory.php")]
         [Authorize(AuthenticationSchemes = BasicAuthenticationHandler.SchemeName)]
@@ -82,7 +81,7 @@ namespace IO.Swagger.Controllers
         [SwaggerOperation("CreateMemory")]
         [SwaggerResponse(statusCode: 200, type: typeof(decimal?), description: "Value was created and stored.")]
         [SwaggerResponse(statusCode: 400, type: typeof(decimal?), description: "bad input parameter")]
-        public virtual IActionResult CreateMemory([FromQuery][Required()]int? num1)
+        public virtual IActionResult CreateMemory([FromQuery][Required()]int? value)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(decimal?));
@@ -92,9 +91,6 @@ namespace IO.Swagger.Controllers
 
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401);
-
-            //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403);
             string exampleJson = null;
             exampleJson = "0.8008281904610115";
             
@@ -110,6 +106,7 @@ namespace IO.Swagger.Controllers
         /// <remarks>Clears the memory</remarks>
         /// <response code="200">Memory Deleted</response>
         /// <response code="400">bad input parameter</response>
+        /// <response code="401">Not authenticated</response>
         [HttpDelete]
         [Route("/api/v.1.0//memory.php")]
         [Authorize(AuthenticationSchemes = BasicAuthenticationHandler.SchemeName)]
@@ -123,16 +120,18 @@ namespace IO.Swagger.Controllers
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400);
 
+            //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(401);
+
             throw new NotImplementedException();
         }
 
         /// <summary>
         /// Retrieves memory value
         /// </summary>
-        /// <remarks>Return value stored in MR</remarks>
+        /// <remarks>Return value stored in memory</remarks>
         /// <response code="200">Memory value returned</response>
         /// <response code="401">Not authenticated</response>
-        /// <response code="403">Access token does not have the required scope</response>
         [HttpGet]
         [Route("/api/v.1.0//memory.php")]
         [Authorize(AuthenticationSchemes = BasicAuthenticationHandler.SchemeName)]
@@ -146,9 +145,6 @@ namespace IO.Swagger.Controllers
 
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401);
-
-            //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403);
             string exampleJson = null;
             exampleJson = "0.8008281904610115";
             
@@ -162,23 +158,26 @@ namespace IO.Swagger.Controllers
         /// Updates specified value
         /// </summary>
         /// <remarks>Updates values in memory</remarks>
-        /// <param name="num1">Value to add in memory</param>
+        /// <param name="value">Value to update in memory</param>
         /// <response code="200">Memory has been updated</response>
         /// <response code="400">bad input parameter</response>
+        /// <response code="401">Not authenticated</response>
         [HttpPut]
         [Route("/api/v.1.0//memory.php")]
         [Authorize(AuthenticationSchemes = BasicAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("UpdateMemory")]
         [SwaggerResponse(statusCode: 200, type: typeof(decimal?), description: "Memory has been updated")]
-        [SwaggerResponse(statusCode: 400, type: typeof(decimal?), description: "bad input parameter")]
-        public virtual IActionResult UpdateMemory([FromQuery][Required()]decimal? num1)
+        public virtual IActionResult UpdateMemory([FromQuery][Required()]decimal? value)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(decimal?));
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(decimal?));
+            // return StatusCode(400);
+
+            //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(401);
             string exampleJson = null;
             exampleJson = "0.8008281904610115";
             

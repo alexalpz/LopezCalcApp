@@ -1,7 +1,7 @@
 /*
  * Lopez Calculator API
  *
- * Simple calculator API
+ * Simple calculator API. To authorize, add the following in headers `Authorization:Basic VIP_Ticket`
  *
  * OpenAPI spec version: 1.0.0
  * Contact: al08583@georgiasouthern.edu

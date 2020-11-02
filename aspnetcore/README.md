@@ -1,6 +1,6 @@
 # IO.Swagger - ASP.NET Core 2.0 Server
 
-Simple calculator API
+Simple calculator API. To authorize, add the following in headers `Authorization:Basic VIP_Ticket`
 
 ## Run
 
