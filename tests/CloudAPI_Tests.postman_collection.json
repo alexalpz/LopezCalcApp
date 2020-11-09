@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "c0774fd0-f9f6-4912-bca2-1c1e09f20742",
+		"name": "CloudAPI_Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"num1\": \"5\",\r\n    \"num2\": \"9\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-east1-it-5236-286717.cloudfunctions.net/function-add",
+					"protocol": "https",
+					"host": [
+						"us-east1-it-5236-286717",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"function-add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sub",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"num1\":\"5\",\r\n    \"num2\":\"7\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-east1-it-5236-286717.cloudfunctions.net/function-sub",
+					"protocol": "https",
+					"host": [
+						"us-east1-it-5236-286717",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"function-sub"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Divide",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"num1\": \"5\",\r\n    \"num2\": \"9\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-east1-it-5236-286717.cloudfunctions.net/function-divide",
+					"protocol": "https",
+					"host": [
+						"us-east1-it-5236-286717",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"function-divide"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Multiply",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"num1\":\"5\",\r\n    \"num2\":\"7\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-east1-it-5236-286717.cloudfunctions.net/function-mult",
+					"protocol": "https",
+					"host": [
+						"us-east1-it-5236-286717",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"function-mult"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Power",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"num1\":\"5\",\r\n    \"num2\":\"7\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-east1-it-5236-286717.cloudfunctions.net/function-power",
+					"protocol": "https",
+					"host": [
+						"us-east1-it-5236-286717",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"function-power"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
