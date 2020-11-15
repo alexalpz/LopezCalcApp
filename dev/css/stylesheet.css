@@ -122,9 +122,29 @@ body{
     --size-divisor: .67;
   }
 }
+
+/*Memory Buttons*/
+
+.memoryList li {
+  padding: 3px 10px;
+  text-align: left;
+}
+.memoryList {
+  display: none;
+  position: absolute;
+  left: 31px;
+  top: 18px;
+  min-width: 42px;
+  border: 1px solid #226073;
+  padding: 5px 0;
+  margin: 0;
+  list-style-type: none;
+  background-color: #6a4496;
+  color: #fff;
+  box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.8);
+}
 /*
 Sources:
-
 To grab specific colors, I used google chromes Color Picker extension. 
 1. Screen rotate source: https://stackoverflow.com/questions/49671841/how-can-i-lock-auto-rotate-on-the-website-for-the-mobile-phone
 2. Placeholder: https://developer.mozilla.org/en-US/docs/Web/CSS/::placeholder
