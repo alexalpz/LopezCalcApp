@@ -114,11 +114,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         if ($adjacent !==0 && $opposite !== 0){
                             #Formula for determining tangent angle from MathOpenRef:https://www.mathopenref.com/trigtangent.html#:~:text=In%20any%20right%20triangle%2C%20the,written%20simply%20as%20'tan'.&text=Often%20remembered%20as%20%22SOH%22%20%2D,See%20SOH%20CAH%20TOA.
                             #Calculator to verify tanget angle result: http://www.math.com/students/calculators/source/tangent.htm
-                            echo "Tan 0: " . ($opposite/$adjacent);
+                            #Greek angle symbol http://mathcentral.uregina.ca/QQ/database/QQ.09.06/s/alex1.html#:~:text=Hi%20Alex.-,The%20symbol%20that%20looks%20like%20a%200%20with%20a%20line,just%20call%20it%20x%20instead.
+                                echo "Tan θ: " . ($opposite/$adjacent);
                             echo "<br>";
                             #Source on Google Cloud Platform to create TAN angle into degrees from StackOverflow: (https://stackoverflow.com/questions/4715271/tan-in-javascript)
                             #Tested angle output on https://keisan.casio.com/exec/system/1223014436
-                            echo "Tan 0 in degrees: " . $response;
+                            echo "Tan θ in degrees: " . $response;
                         }
                     else {
                         echo "Sorry! Something went wrong. ";
