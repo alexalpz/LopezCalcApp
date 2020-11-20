@@ -145,7 +145,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://alexalopez.xyz/api/finalAPI/calculator.php?adjacent=4",
+					"raw": "https://alexalopez.xyz/api/finalAPI/calculator.php?opposite=4",
 					"protocol": "https",
 					"host": [
 						"alexalopez",
@@ -159,12 +159,12 @@
 					"query": [
 						{
 							"key": "opposite",
-							"value": "4",
-							"disabled": true
+							"value": "4"
 						},
 						{
 							"key": "adjacent",
-							"value": "4"
+							"value": "4",
+							"disabled": true
 						}
 					]
 				}
