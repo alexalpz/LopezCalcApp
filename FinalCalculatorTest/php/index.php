@@ -1,7 +1,7 @@
 <?php
 
 #Author: Alexa Lopez
-#Date: 11/19/2020
+#Date: 11/16/2020
 #Final Calculator Design
 #Outline code inspired by Dr. Thackston lectures
 
@@ -109,22 +109,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <!--Adding conditional stament for output incase if answer is non-numerical-->
             <h3 id="answer"><?php    
                 //Check if response is a number:https://www.php.net/manual/en/function.is-numeric.php
-                if (is_numeric($response)) {
-                    //Both responses as zero brings an error message. 
-                    if ($adjacent !==0 && $opposite !== 0){
-                    #Formula for determining tangent angle from MathOpenRef:https://www.mathopenref.com/trigtangent.html#:~:text=In%20any%20right%20triangle%2C%20the,written%20simply%20as%20'tan'.&text=Often%20remembered%20as%20%22SOH%22%20%2D,See%20SOH%20CAH%20TOA.
-                    #Calculator to verify tanget angle result: http://www.math.com/students/calculators/source/tangent.htm
-                    echo "Tan 0: " . ($opposite/$adjacent);
-                    echo "<br>";
-                    #Source on Google Cloud Platform to create TAN angle into degrees from StackOverflow: (https://stackoverflow.com/questions/4715271/tan-in-javascript)
-                    #Tested angle output on https://keisan.casio.com/exec/system/1223014436
-                    echo "Tan 0 in degrees: " . $response;
-                    }
+                    if (is_numeric($response) && !empty($response)) {
+                        //Both responses as zero brings an error message. 
+                        if ($adjacent !==0 && $opposite !== 0){
+                            #Formula for determining tangent angle from MathOpenRef:https://www.mathopenref.com/trigtangent.html#:~:text=In%20any%20right%20triangle%2C%20the,written%20simply%20as%20'tan'.&text=Often%20remembered%20as%20%22SOH%22%20%2D,See%20SOH%20CAH%20TOA.
+                            #Calculator to verify tanget angle result: http://www.math.com/students/calculators/source/tangent.htm
+                            echo "Tan 0: " . ($opposite/$adjacent);
+                            echo "<br>";
+                            #Source on Google Cloud Platform to create TAN angle into degrees from StackOverflow: (https://stackoverflow.com/questions/4715271/tan-in-javascript)
+                            #Tested angle output on https://keisan.casio.com/exec/system/1223014436
+                            echo "Tan 0 in degrees: " . $response;
+                        }
                     else {
                         echo "Sorry! Something went wrong. ";
                     } 
                 } else {
-                    echo "Sorry! Something went wrong. ";
+                    echo "";
                 } ?> 
         </h3>
         </div>
