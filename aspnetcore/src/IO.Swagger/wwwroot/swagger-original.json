@@ -1,0 +1,266 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "Lopez Calculator API",
+    "description" : "Simple calculator API. To authorize, add the following in headers `Authorization:Basic VIP_Ticket`",
+    "contact" : {
+      "email" : "al08583@georgiasouthern.edu"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "https://alexalopez.xyz/api/v.1.0/",
+    "description" : "Production Endpoint"
+  }, {
+    "url" : "https://virtserver.swaggerhub.com/alexalpz/LopezCalculatorAPI/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  } ],
+  "security" : [ {
+    "basicAuth" : [ ]
+  }, {
+    "bearerAuth" : [ ]
+  }, {
+    "oAuthMemory" : [ "write", "read" ]
+  }, {
+    "oAuthCalculator" : [ "write", "read" ]
+  } ],
+  "tags" : [ {
+    "name" : "public",
+    "description" : "Accessible to the public"
+  }, {
+    "name" : "admin",
+    "description" : "Accessible to admin only"
+  } ],
+  "paths" : {
+    "/calculator.php" : {
+      "get" : {
+        "tags" : [ "public" ],
+        "summary" : "Performs caculations",
+        "description" : "Returns the value of two integers",
+        "operationId" : "calcID",
+        "parameters" : [ {
+          "name" : "num1",
+          "in" : "query",
+          "description" : "First value",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "num2",
+          "in" : "query",
+          "description" : "Second value",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "operation",
+          "in" : "query",
+          "description" : "Math operation for the values to perform",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "enum" : [ "-", "+", "*", "/", "**" ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Calculation result",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "number",
+                  "format" : "date-time",
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          },
+          "401" : {
+            "description" : "Not authenticated"
+          },
+          "403" : {
+            "description" : "Access token does not have the required scope"
+          }
+        }
+      }
+    },
+    "/memory.php" : {
+      "get" : {
+        "tags" : [ "public" ],
+        "summary" : "Retrieves memory value",
+        "description" : "Return value stored in memory",
+        "operationId" : "memoryID",
+        "responses" : {
+          "200" : {
+            "description" : "Memory value returned",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "number",
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Not authenticated"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "public" ],
+        "summary" : "Updates specified value",
+        "description" : "Updates values in memory",
+        "operationId" : "updateMemory",
+        "parameters" : [ {
+          "name" : "value",
+          "in" : "query",
+          "description" : "Value to update in memory",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "number"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Memory has been updated",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "number",
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          },
+          "401" : {
+            "description" : "Not authenticated"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "public" ],
+        "summary" : "Creates values in memory",
+        "description" : "Stores specified values in memory",
+        "operationId" : "createMemory",
+        "parameters" : [ {
+          "name" : "value",
+          "in" : "query",
+          "description" : "Value to store",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Value was created and stored.",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "number",
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "number",
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Not authenticated"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "public" ],
+        "summary" : "Deletes memory value",
+        "description" : "Clears the memory",
+        "operationId" : "deleteMemory",
+        "responses" : {
+          "200" : {
+            "description" : "Memory Deleted"
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          },
+          "401" : {
+            "description" : "Not authenticated"
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : { },
+    "securitySchemes" : {
+      "basicAuth" : {
+        "type" : "http",
+        "description" : "Basic HTTP authentication. Allowed headers-- Authorization: Basic <VIP_Ticket> | Authorization: Basic <base64 hash of `VIP_Ticket:`>",
+        "scheme" : "basic"
+      },
+      "bearerAuth" : {
+        "type" : "http",
+        "description" : "Bearer HTTP authentication. Allowed headers-- Authorization: Bearer <VIP_Ticket>",
+        "scheme" : "bearer",
+        "bearerFormat" : "auth-scheme"
+      },
+      "oAuthMemory" : {
+        "type" : "oauth2",
+        "description" : "This API uses OAuth 2 with the implicit grant flow. [More info](https://api.example.com/docs/auth)",
+        "flows" : {
+          "implicit" : {
+            "authorizationUrl" : "https://alexalopez.xyz/api/v.1.0/memory.php",
+            "scopes" : {
+              "read" : "Read data",
+              "write" : "Write data"
+            }
+          }
+        }
+      },
+      "oAuthCalculator" : {
+        "type" : "oauth2",
+        "description" : "This API uses OAuth 2 with the implicit grant flow. [More info](https://api.example.com/docs/auth)",
+        "flows" : {
+          "implicit" : {
+            "authorizationUrl" : "https://alexalopez.xyz/api/v.1.0/calculator.php",
+            "scopes" : {
+              "read" : "Read data",
+              "write" : "Write data"
+            }
+          }
+        }
+      }
+    }
+  }
+}
